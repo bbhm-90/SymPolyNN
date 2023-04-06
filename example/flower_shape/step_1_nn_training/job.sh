@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 PPATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 EXAMPLEPATH=$(dirname "$PPATH")
 EXAMPLEPATH=$(dirname "$EXAMPLEPATH")
@@ -6,7 +6,8 @@ ROOTPATH=$(dirname "$EXAMPLEPATH")
 DATAPATH="$ROOTPATH/data" 
 AddetiveClassOptions=("baseLO")
 SigmaPosEnc=("0." "2.")
-DataCord=("cylindrical" "cartesian")
+# DataCord=("cylindrical" "cartesian")
+DataCord=("cylindrical")
 
 for addetive_class in ${AddetiveClassOptions[*]};do
     cntrPosEnc=0
@@ -24,7 +25,7 @@ for addetive_class in ${AddetiveClassOptions[*]};do
                 --randomSeed "142"\
                 --layers_after_first "20","20","1"\
                 --activations "relu","relu","tanh"\
-                --epochs "5000"\
+                --epochs "10000"\
                 --lr "0.001"\
                 --batch_size "10000"\
                 --positional_encoding\

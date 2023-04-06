@@ -38,6 +38,7 @@ def read_data(
     """
         input_fields: ['p','rho','theta']
                       ['sigma1','sigma2','sigma3']
+                      ["sigma_h", "sigma_vm", "L", "v"]
     """
     xRaw = pd.read_csv(data_add)
     x = xRaw[input_fields].to_numpy()

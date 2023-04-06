@@ -42,6 +42,8 @@ class PostProcessor():
             input_fields = ['sigma1', 'sigma2', 'sigma3']
         elif dataCord == "cylindrical":
             input_fields = ['p', 'rho', 'theta']
+        elif dataCord == "Bomarito":
+            input_fields = ["sigma_h", "sigma_vm", "L", "v"]
         else:
             raise NotImplementedError(dataCord)
         
