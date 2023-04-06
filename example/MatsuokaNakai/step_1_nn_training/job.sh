@@ -30,8 +30,8 @@ for addetive_class in ${AddetiveClassOptions[*]};do
                 --xScalerType "minmax"\
                 --yScalerType "standard"\
                 --randomSeed "142"\
-                --layers_after_first "20","10","10","1"\
-                --activations "relu","relu","relu","tanh"\
+                --layers_after_first "10","10","10","1"\
+                --activations "elu","elu","elu","tanh"\
                 --epochs "25000"\
                 --lr "0.001"\
                 --batch_size "10000"\
