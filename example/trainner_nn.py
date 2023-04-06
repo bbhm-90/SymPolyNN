@@ -1,4 +1,5 @@
 import os
+import time
 import joblib
 import json
 from argparse import ArgumentParser
@@ -61,6 +62,10 @@ def get_parser():
     return parser
 
 def save_train(model, loss_pred_record, loss_sprs_1st_record, loss_sprs_2nd_record, lr_op_record, weight_record, args):
+    global TIME_INIT
+    time_elapsed = time.time() - TIME_INIT
+    with open(pjoin(args.outDir, "time_elapsed.txt"), "w") as f:
+        f.write(f"{time_elapsed}")
     torch.save(model.state_dict(), pjoin(args.outDir, 'model.pth'))
     
     tmp = {'loss_pred': np.array(loss_pred_record)}
@@ -168,6 +173,7 @@ def train(args):
     best_pred = 1000.
     otherTrainParams = {"penalty_first_order":args.penalty_first_order, "penalty_second_order":args.penalty_second_order}
     weight_records = []
+    global TIME_INIT; TIME_INIT = time.time()
     for epoch in range(args.epochs):
         loss_pred_epoch = 0.
         loss_sprs_1st_epoch = 0.

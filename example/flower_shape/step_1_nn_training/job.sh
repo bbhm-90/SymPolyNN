@@ -4,12 +4,9 @@ EXAMPLEPATH=$(dirname "$PPATH")
 EXAMPLEPATH=$(dirname "$EXAMPLEPATH")
 ROOTPATH=$(dirname "$EXAMPLEPATH")
 DATAPATH="$ROOTPATH/data" 
-AddetiveClassOptions=("PolynomialHO" "baseLO")
+AddetiveClassOptions=("baseLO")
 SigmaPosEnc=("0." "2.")
 DataCord=("cylindrical" "cartesian")
-AddetiveClassOptions=("PolynomialHO")
-SigmaPosEnc=("0.")
-DataCord=("cylindrical")
 
 for addetive_class in ${AddetiveClassOptions[*]};do
     cntrPosEnc=0
@@ -27,9 +24,9 @@ for addetive_class in ${AddetiveClassOptions[*]};do
                 --randomSeed "142"\
                 --layers_after_first "20","20","1"\
                 --activations "relu","relu","tanh"\
-                --epochs "5"\
+                --epochs "5000"\
                 --lr "0.001"\
-                --batch_size "1000"\
+                --batch_size "10000"\
                 --positional_encoding\
                 --sigma_pos_enc "$sigma_pos_enc"\
                 --train_shuffle\
@@ -37,7 +34,6 @@ for addetive_class in ${AddetiveClassOptions[*]};do
                 --penalty_second_order "0.0"\
                 --updateOutputPeriod "1000"\
                 --final_bias "0"
-            echo $outDir
             python "$EXAMPLEPATH/post_process_trained_nn.py" $outDir
         done;
         ((cntrPosEnc++))
