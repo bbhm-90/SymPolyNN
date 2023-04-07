@@ -31,24 +31,24 @@ rho = np.zeros_like(theta)
 
 for i in range(np.shape(theta)[0]):
 
-  x = 300.0
+    x = 300.0
 
-  print(">> Point", i, "------------------------------------")
+    print(">> Point", i, "------------------------------------")
 
-  for ii in range(maxiter):
-    res = f_benchmark(0.0, x, theta[i], 0.0)
-    jac = get_dfdrho(0.0, x, theta[i], 0.0)
+    for ii in range(maxiter):
+        res = f_benchmark(0.0, x, theta[i], 0.0)
+        jac = get_dfdrho(0.0, x, theta[i], 0.0)
 
-    dx = -res / jac
-    x = x + dx
+        dx = -res / jac
+        x = x + dx
 
-    err = np.linalg.norm(dx)
+        err = np.linalg.norm(dx)
 
-    print(" Newton iter.",ii, ": err =", err)
+        print(" Newton iter.",ii, ": err =", err)
 
-    if err < tol:
-      rho[i] = x
-      break
+        if err < tol:
+            rho[i] = x
+            break
 # -----------------------------------------------------------------
 
 # -----------------------------------------------------------------
@@ -57,24 +57,24 @@ rho_NAM = np.zeros_like(theta)
 
 for i in range(np.shape(theta)[0]):
 
-  x = 300.0
+    x = 300.0
 
-  print(">> Point", i, "------------------------------------")
+    print(">> Point", i, "------------------------------------")
 
-  for ii in range(maxiter):
-    res = f_NAM(0.0, x, theta[i], 0.0)
-    jac = 1 # just used constant
-    
-    dx = -res / jac
-    x = x + dx
+    for ii in range(maxiter):
+        res = f_NAM(0.0, x, theta[i], 0.0)
+        jac = 1 # just used constant
+        
+        dx = -res / jac
+        x = x + dx
 
-    err = np.linalg.norm(dx)
+        err = np.linalg.norm(dx)
 
-    print(" Newton iter.",ii, ": err =", err)
+        print(" Newton iter.",ii, ": err =", err)
 
-    if err < tol or ii == maxiter-1:
-      rho_NAM[i] = x
-      break
+        if err < tol or ii == maxiter-1:
+          rho_NAM[i] = x
+          break
 # -----------------------------------------------------------------
 
 # -----------------------------------------------------------------
@@ -83,24 +83,24 @@ rho_symb = np.zeros_like(theta)
 
 for i in range(np.shape(theta)[0]):
 
-  x = 300.0
+    x = 300.0
 
-  print(">> Point", i, "------------------------------------")
+    print(">> Point", i, "------------------------------------")
 
-  for ii in range(maxiter):
-    res = f_symbolic(0.0, x, theta[i], 0.0)
-    jac = 1 # just used constant
-    
-    dx = -res / jac
-    x = x + dx
+    for ii in range(maxiter):
+        res = f_symbolic(0.0, x, theta[i], 0.0)
+        jac = 1 # just used constant
+        
+        dx = -res / jac
+        x = x + dx
 
-    err = np.linalg.norm(dx)
+        err = np.linalg.norm(dx)
 
-    print(" Newton iter.",ii, ": err =", err)
+        print(" Newton iter.",ii, ": err =", err)
 
-    if err < tol or ii == maxiter-1:
-      rho_symb[i] = x
-      break
+        if err < tol or ii == maxiter-1:
+          rho_symb[i] = x
+          break
 # -----------------------------------------------------------------
 
 

@@ -3,9 +3,9 @@ import torch.nn as nn
 import joblib
 import numpy as np
 
-model_NAM = torch.jit.load("example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_1/model.ptjit")
-f_INPUT_scaler  = joblib.load("example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_1/xscaler.joblib")
-f_OUTPUT_scaler = joblib.load("example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_1/yscaler.joblib")
+model_NAM = torch.jit.load("example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/model.ptjit")
+f_INPUT_scaler  = joblib.load("example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/xscaler.joblib")
+f_OUTPUT_scaler = joblib.load("example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/yscaler.joblib")
 
 def f_NAM(p, rho, theta, lamda):
 

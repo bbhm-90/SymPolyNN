@@ -39,7 +39,7 @@ config0 = {
 model_symb = SymbolicYeildSurfacePolynimialHO(config0)
 def f_symbolic(p, rho, theta, lamda):
   
-    RT = np.array([p, rho, theta]).reshape(1,3)
-    f = model_symb.predict(RT).item()
+  RT = np.array([p, rho, theta]).reshape(1,3)
+  f = model_symb.predict(RT).item()
 
-    return f
+  return f
