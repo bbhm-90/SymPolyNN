@@ -12,7 +12,7 @@ from autograd import elementwise_grad as egrad
 
 # Data points
 N_points = 100
-theta = np.linspace(0, 2*np.pi, N_points+1)[0:N_points]
+theta = np.linspace(0, 2*np.pi, N_points)
 
 
 # Newton-Raphson details
@@ -169,7 +169,8 @@ for i in range(np.shape(theta)[0]):
 # Plot results
 fig = plt.figure(0,figsize=(7,7))
 ax = fig.add_subplot(111, projection='polar')
-ax.plot(theta, rho, 'k-')
-ax.plot(theta, rho_NAM, 'r-')
-ax.plot(theta, rho_symb, 'b-')
+ax.plot(theta, rho, 'k-', linewidth=2.0, label='Analytical')
+ax.plot(theta, rho_NAM, 'r--', linewidth=1.5, label='NAM')
+ax.plot(theta, rho_symb, 'b:', linewidth=1.0, label='Symbolic regression')
+ax.legend()
 plt.show()
