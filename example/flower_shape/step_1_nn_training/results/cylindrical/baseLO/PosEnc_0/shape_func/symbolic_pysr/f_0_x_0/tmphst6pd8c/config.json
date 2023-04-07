@@ -1,0 +1,23 @@
+{
+    "niterations": 100,
+    "timeout_in_seconds": 3600,
+    "maxsize": 100,
+    "maxdepth": 100,
+    "binary_operators": [
+        "+",
+        "*",
+        "/"
+    ],
+    "unary_operators": [
+        "cos",
+        "exp",
+        "sin",
+        "log"
+    ],
+    "loss": "loss(x, y) = (x - y)^2",
+    "early_stop_condition": "stop_if(loss, complexity) = loss < 1e-6 && complexity < 10",
+    "tempdir": "/home/bb2969/projects23/SymPolyNN/example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_0/shape_func/symbolic_pysr/f_0_x_0",
+    "delete_tempfiles": false,
+    "denoise": false,
+    "scaler_type": "standard"
+}

@@ -1,0 +1,33 @@
+{
+    "addetive_class": "baseLO",
+    "outDir": "/Users/bahador/projects/SymPolyNN/example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_1/",
+    "dataAdd": "/Users/bahador/projects/SymPolyNN/data/augmented_data_flower.csv",
+    "dataCord": "cylindrical",
+    "xScalerType": "minmax",
+    "yScalerType": "standard",
+    "final_bias": 0,
+    "randomSeed": 142,
+    "layers_after_first": [
+        20,
+        20,
+        1
+    ],
+    "activations": [
+        "relu",
+        "relu",
+        "tanh"
+    ],
+    "positional_encoding": true,
+    "sigma_pos_enc": 2.0,
+    "lr": 0.001,
+    "epochs": 10000,
+    "stop_loss": 1e-05,
+    "batch_size": 10000,
+    "train_shuffle": true,
+    "lrChangeFactor": 0.92,
+    "lrPatience": 50,
+    "lrStartEpoch": 1000,
+    "updateOutputPeriod": 1000,
+    "penalty_first_order": 0.0,
+    "penalty_second_order": 0.0
+}

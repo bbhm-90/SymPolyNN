@@ -38,10 +38,10 @@ for addetive_class in ${AddetiveClassOptions[*]};do
                 --positional_encoding\
                 --sigma_pos_enc "$sigma_pos_enc"\
                 --train_shuffle\
-                --penalty_first_order "0.001"\
-                --penalty_second_order "0.01"\
-                --updateOutputPeriod "1000"\
-                --final_bias "0"
+                --penalty_first_order "0.0"\
+                --penalty_second_order "0.0"\
+                --updateOutputPeriod "300"\
+                --final_bias "1"
             python "$EXAMPLEPATH/post_process_trained_nn.py" $outDir
         done;
         ((cntrPosEnc++))

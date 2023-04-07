@@ -21,7 +21,7 @@ for addetive_class in ${AddetiveClassOptions[*]};do
             --randomSeed "142"\
             --layers_after_first "10","10","1"\
             --activations "elu","elu","tanh"\
-            --epochs "5"\
+            --epochs "10"\
             --lr "0.001"\
             --batch_size "5000"\
             --positional_encoding\
