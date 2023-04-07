@@ -134,7 +134,7 @@ for i in range(np.shape(theta)[0]):
 
     err = np.linalg.norm(dx)
 
-    print(" Newton iter.",ii, ": err =", err, ", x =",x)
+    print(" Newton iter.",ii, ": err =", err)
 
     if err < tol or ii == maxiter-1:
       rho_NAM[i] = x
@@ -159,7 +159,7 @@ for i in range(np.shape(theta)[0]):
 
     err = np.linalg.norm(dx)
 
-    print(" Newton iter.",ii, ": err =", err, ", x =",x)
+    print(" Newton iter.",ii, ": err =", err)
 
     if err < tol or ii == maxiter-1:
       rho_symb[i] = x
