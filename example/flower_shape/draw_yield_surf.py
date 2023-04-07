@@ -63,7 +63,7 @@ for i in range(np.shape(theta)[0]):
 
     for ii in range(maxiter):
         res = f_NAM(0.0, x, theta[i], 0.0)
-        jac = 1 # just used constant
+        jac = 1
         
         dx = -res / jac
         x = x + dx
@@ -89,7 +89,7 @@ for i in range(np.shape(theta)[0]):
 
     for ii in range(maxiter):
         res = f_symbolic(0.0, x, theta[i], 0.0)
-        jac = 1 # just used constant
+        jac = 1
         
         dx = -res / jac
         x = x + dx
