@@ -3,9 +3,9 @@ import autograd.numpy as np
 from autograd import elementwise_grad as egrad
 
 # Specify p
-p_spec1 = 200.0
-p_spec2 = 400.0
-p_spec3 = 600.0
+p_spec1 = 100.0
+p_spec2 = 200.0
+p_spec3 = 300.0
 
 
 # Data points
@@ -14,7 +14,7 @@ theta = np.linspace(0, 2*np.pi, N_points)
 
 
 # Newton-Raphson details
-maxiter = 10
+maxiter = 20
 tol = 1e-11
 
 
@@ -27,8 +27,8 @@ get_dfdrho = egrad(f_benchmark, 1)
 from example.MatsuokaNakai.f_NAM import *
 
 
-# # NAM-symbolic yield function
-# from example.MatsuokaNakai.f_symbolic import *
+# NAM-symbolic yield function
+from example.MatsuokaNakai.f_symbolic import *
 
 
 # -----------------------------------------------------------------
@@ -170,72 +170,72 @@ for i in range(np.shape(theta)[0]):
 # -----------------------------------------------------------------
 
 # -----------------------------------------------------------------
-# # Return mapping for NAM-symbolic yield function
-# rho_symb1 = np.zeros_like(theta)
-# for i in range(np.shape(theta)[0]):
+# Return mapping for NAM-symbolic yield function
+rho_symb1 = np.zeros_like(theta)
+for i in range(np.shape(theta)[0]):
 
-#   x = p_spec1
+  x = p_spec1
 
-#   print(">> Point", i, "------------------------------------")
+  print(">> Point", i, "------------------------------------")
 
-#   for ii in range(maxiter):
-#     res = f_symbolic(p_spec1, x, theta[i], 0.0)
-#     jac = 1
+  for ii in range(maxiter):
+    res = f_symbolic(p_spec1, x, theta[i], 0.0)
+    jac = 1
     
-#     dx = -res / jac
-#     x = x + dx
+    dx = -res / jac
+    x = x + dx
 
-#     err = np.linalg.norm(dx)
+    err = np.linalg.norm(dx)
 
-#     print(" Newton iter.",ii, ": err =", err)
+    print(" Newton iter.",ii, ": err =", err)
 
-#     if err < tol or ii == maxiter-1:
-#       rho_symb1[i] = x
-#       break
+    if err < tol or ii == maxiter-1:
+      rho_symb1[i] = x
+      break
 
-# rho_symb2 = np.zeros_like(theta)
-# for i in range(np.shape(theta)[0]):
+rho_symb2 = np.zeros_like(theta)
+for i in range(np.shape(theta)[0]):
 
-#   x = p_spec2
+  x = p_spec2
 
-#   print(">> Point", i, "------------------------------------")
+  print(">> Point", i, "------------------------------------")
 
-#   for ii in range(maxiter):
-#     res = f_symbolic(p_spec2, x, theta[i], 0.0)
-#     jac = 1
+  for ii in range(maxiter):
+    res = f_symbolic(p_spec2, x, theta[i], 0.0)
+    jac = 1
     
-#     dx = -res / jac
-#     x = x + dx
+    dx = -res / jac
+    x = x + dx
 
-#     err = np.linalg.norm(dx)
+    err = np.linalg.norm(dx)
 
-#     print(" Newton iter.",ii, ": err =", err)
+    print(" Newton iter.",ii, ": err =", err)
 
-#     if err < tol or ii == maxiter-1:
-#       rho_symb2[i] = x
-#       break
+    if err < tol or ii == maxiter-1:
+      rho_symb2[i] = x
+      break
 
-# rho_symb3 = np.zeros_like(theta)
-# for i in range(np.shape(theta)[0]):
+rho_symb3 = np.zeros_like(theta)
+for i in range(np.shape(theta)[0]):
 
-#   x = p_spec3
+  x = p_spec3
 
-#   print(">> Point", i, "------------------------------------")
+  print(">> Point", i, "------------------------------------")
 
-#   for ii in range(maxiter):
-#     res = f_symbolic(p_spec3, x, theta[i], 0.0)
-#     jac = 1
+  for ii in range(maxiter):
+    res = f_symbolic(p_spec3, x, theta[i], 0.0)
+    jac = 1
     
-#     dx = -res / jac
-#     x = x + dx
+    dx = -res / jac
+    x = x + dx
 
-#     err = np.linalg.norm(dx)
+    err = np.linalg.norm(dx)
 
-#     print(" Newton iter.",ii, ": err =", err)
+    print(" Newton iter.",ii, ": err =", err)
 
-#     if err < tol or ii == maxiter-1:
-#       rho_symb3[i] = x
-#       break
+    if err < tol or ii == maxiter-1:
+      rho_symb3[i] = x
+      break
 # -----------------------------------------------------------------
 
 
@@ -248,8 +248,8 @@ ax.plot(theta, rho3, 'k-', linewidth=2.0)
 ax.plot(theta, rho_NAM1, 'r--', linewidth=1.5, label='NAM')
 ax.plot(theta, rho_NAM2, 'r--', linewidth=1.5)
 ax.plot(theta, rho_NAM3, 'r--', linewidth=1.5)
-# ax.plot(theta, rho_symb1, 'b:', linewidth=1.0, label='Symbolic regression')
-# ax.plot(theta, rho_symb2, 'b:', linewidth=1.0)
-# ax.plot(theta, rho_symb3, 'b:', linewidth=1.0)
+ax.plot(theta, rho_symb1, 'b:', linewidth=1.0, label='Symbolic regression')
+ax.plot(theta, rho_symb2, 'b:', linewidth=1.0)
+ax.plot(theta, rho_symb3, 'b:', linewidth=1.0)
 ax.legend()
 plt.show()
