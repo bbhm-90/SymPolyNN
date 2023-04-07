@@ -18,7 +18,7 @@ for addetive_class in ${AddetiveClassOptions[*]};do
             python "$EXAMPLEPATH/trainner_nn.py"\
                 --addetive_class "$addetive_class"\
                 --outDir $outDir\
-                --dataAdd "$DATAPATH/augmented_data_flower.csv"\
+                --dataAdd "$DATAPATH/augmented_data_flower_26k.csv"\
                 --dataCord $dataCord\
                 --xScalerType "minmax"\
                 --yScalerType "standard"\

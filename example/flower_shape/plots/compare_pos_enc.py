@@ -15,7 +15,7 @@ if __name__ == "__main__":
     dataCord = "cylindrical"
     form_type = "baseLO"
     
-    raw_data = "data/augmented_data_flower.csv"
+    raw_data = "data/augmented_data_flower_26k.csv"
     loss0 = pjoin(res_dir, f"{dataCord}/{form_type}/PosEnc_0/loss_pred.csv")
     yraw_pred0 = pjoin(res_dir, f"{dataCord}/{form_type}/PosEnc_0/yraw_pred.csv")
     loss1 = pjoin(res_dir, f"{dataCord}/{form_type}/PosEnc_1/loss_pred.csv")

@@ -1,7 +1,7 @@
 {
     "addetive_class": "baseLO",
     "outDir": "/Users/bahador/projects/SymPolyNN/example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_0/",
-    "dataAdd": "/Users/bahador/projects/SymPolyNN/data/augmented_data_flower.csv",
+    "dataAdd": "/Users/bahador/projects/SymPolyNN/data/augmented_data_flower_26k.csv",
     "dataCord": "cylindrical",
     "xScalerType": "minmax",
     "yScalerType": "standard",

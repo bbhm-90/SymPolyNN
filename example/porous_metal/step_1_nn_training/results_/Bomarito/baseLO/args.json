@@ -1,7 +1,7 @@
 {
     "addetive_class": "baseLO",
     "outDir": "/home/bb2969/projects23/SymPolyNN/example/porous_metal/step_1_nn_training/results/Bomarito/baseLO/",
-    "dataAdd": "/home/bb2969/projects23/SymPolyNN/data/augmented_data_Bomarito_88k_noisy_4.csv",
+    "dataAdd": "/home/bb2969/projects23/SymPolyNN/data/augmented_data_Bomarito_66k_noisy_4.csv",
     "dataCord": "Bomarito",
     "xScalerType": "minmax",
     "yScalerType": "standard",

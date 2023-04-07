@@ -1,7 +1,7 @@
 {
     "addetive_class": "baseLO",
     "outDir": "/Users/bahador/projects/SymPolyNN/example/MatsuokaNakai/step_1_nn_training/results/cylindrical/baseLO/PosEnc_1/",
-    "dataAdd": "/Users/bahador/projects/SymPolyNN/data/augmented_data_MatsuokaNakai.csv",
+    "dataAdd": "/Users/bahador/projects/SymPolyNN/data/augmented_data_MatsuokaNakai_13k.csv",
     "dataCord": "cylindrical",
     "xScalerType": "minmax",
     "yScalerType": "standard",
