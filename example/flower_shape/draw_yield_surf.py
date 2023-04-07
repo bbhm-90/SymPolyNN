@@ -58,6 +58,7 @@ config0 = {
         0.0, 0.0, 0.0
     ], # list of float
     "ho_dim_pairs": [[0,1],[0,2],[1,2],[0,0],[1,1],[2,2]],
+    "final_bias": 0.0,
     "symb_funcs":
     [
         {
