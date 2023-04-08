@@ -21,6 +21,12 @@ get_dfdrho = egrad(f_benchmark, 1)
 from example.flower_shape.f_NAM import *
 
 
+# Single MLP yield function
+import sys
+sys.path.append('example/flower_shape/MLP')
+from example.flower_shape.f_MLP import *
+
+
 # NAM-symbolic yield function
 from example.flower_shape.f_symbolic import *
 
@@ -78,6 +84,32 @@ for i in range(np.shape(theta)[0]):
 # -----------------------------------------------------------------
 
 # -----------------------------------------------------------------
+# Return mapping for MLP yield function
+rho_MLP = np.zeros_like(theta)
+
+for i in range(np.shape(theta)[0]):
+
+    x = rho[i]
+
+    print(">> Point", i, "------------------------------------")
+
+    for ii in range(maxiter):
+        res = f_MLP(0.0, x, theta[i])
+        jac = 1
+        
+        dx = -res / jac
+        x = x + dx
+
+        err = np.linalg.norm(dx)
+
+        print(" Newton iter.",ii, ": err =", err)
+
+        if err < tol or ii == maxiter-1:
+          rho_MLP[i] = x
+          break
+# -----------------------------------------------------------------
+
+# -----------------------------------------------------------------
 # Return mapping for NAM-symbolic yield function
 rho_symb = np.zeros_like(theta)
 
@@ -109,6 +141,7 @@ fig = plt.figure(0,figsize=(7,7))
 ax = fig.add_subplot(111, projection='polar')
 ax.plot(theta, rho, 'k-', linewidth=2.0, label='Analytical')
 ax.plot(theta, rho_NAM, 'r--', linewidth=1.5, label='NAM')
+ax.plot(theta, rho_MLP, 'g.-', linewidth=1.25, label='MLP')
 ax.plot(theta, rho_symb, 'b:', linewidth=1.0, label='Symbolic regression')
 ax.legend()
 plt.show()
