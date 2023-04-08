@@ -81,7 +81,7 @@ def read_and_plot(data_sym_res_dir, loss_th=None):
 if __name__ == "__main__":
     # base_dir = os.path.dirname(os.path.abspath(__file__))
     # base_dir = pjoin(base_dir, "results/cylindrical/PolynomialHO/PosEnc_1/shape_func/")
-    base_dir = "example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_0/shape_func"
+    base_dir = "example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_1/shape_func"
     # func_names = ["f_0_x_0", "f_1_x_1", "f_2_x_2"]
     func_names = ["f_0_x_0", "f_1_x_1", "f_2_x_2"]
     loss_ths = [None] * len(func_names)

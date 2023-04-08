@@ -4,7 +4,7 @@ import numpy as np
 phi = np.radians(30)
 
 # Benchmark
-def f_benchmark(p, rho, theta, lamda):
+def f_benchmark(p, rho, theta):
 
     sigma1pp = rho*np.cos(theta)
     sigma2pp = rho*np.sin(theta)

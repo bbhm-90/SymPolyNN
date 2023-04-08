@@ -3,7 +3,7 @@ from src.symbolic.equation_assembler import SymbolicYeildSurfacePolynimialHO
 
 config0 = {
     "form_type":"PolynomialHO",# str
-    "x_num_dim":3, # int
+    "x_num_dim":4, # int
     "xscaler_path":"example/flower_shape/step_1_nn_training/results_2/cylindrical/baseLO/PosEnc_1/xscaler.joblib", # pkl file path
     "yscaler_path":"example/flower_shape/step_1_nn_training/results_2/cylindrical/baseLO/PosEnc_1/yscaler.joblib", # pkl file path
     "func_weights": [

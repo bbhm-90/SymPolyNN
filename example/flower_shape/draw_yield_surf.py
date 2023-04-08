@@ -36,8 +36,8 @@ for i in range(np.shape(theta)[0]):
     print(">> Point", i, "------------------------------------")
 
     for ii in range(maxiter):
-        res = f_benchmark(0.0, x, theta[i], 0.0)
-        jac = get_dfdrho(0.0, x, theta[i], 0.0)
+        res = f_benchmark(0.0, x, theta[i])
+        jac = get_dfdrho(0.0, x, theta[i])
 
         dx = -res / jac
         x = x + dx
@@ -62,7 +62,7 @@ for i in range(np.shape(theta)[0]):
     print(">> Point", i, "------------------------------------")
 
     for ii in range(maxiter):
-        res = f_NAM(0.0, x, theta[i], 0.0)
+        res = f_NAM(0.0, x, theta[i])
         jac = 1
         
         dx = -res / jac
@@ -88,7 +88,7 @@ for i in range(np.shape(theta)[0]):
     print(">> Point", i, "------------------------------------")
 
     for ii in range(maxiter):
-        res = f_symbolic(0.0, x, theta[i], 0.0)
+        res = f_symbolic(0.0, x, theta[i])
         jac = 1
         
         dx = -res / jac

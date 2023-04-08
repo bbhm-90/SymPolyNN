@@ -3,9 +3,9 @@ import autograd.numpy as np
 from autograd import elementwise_grad as egrad
 
 # Specify p
-p_spec1 = 100.0
-p_spec2 = 200.0
-p_spec3 = 300.0
+p_spec1 = 50.0
+p_spec2 = 100.0
+p_spec3 = 150.0
 
 
 # Data points
@@ -41,8 +41,8 @@ for i in range(np.shape(theta)[0]):
   print(">> Point", i, "------------------------------------")
 
   for ii in range(maxiter):
-    res = f_benchmark(p_spec1, x, theta[i], 0.0)
-    jac = get_dfdrho(p_spec1, x, theta[i], 0.0)
+    res = f_benchmark(p_spec1, x, theta[i])
+    jac = get_dfdrho(p_spec1, x, theta[i])
 
     dx = -res / jac
     x = x + dx
@@ -63,8 +63,8 @@ for i in range(np.shape(theta)[0]):
   print(">> Point", i, "------------------------------------")
 
   for ii in range(maxiter):
-    res = f_benchmark(p_spec2, x, theta[i], 0.0)
-    jac = get_dfdrho(p_spec2, x, theta[i], 0.0)
+    res = f_benchmark(p_spec2, x, theta[i])
+    jac = get_dfdrho(p_spec2, x, theta[i])
 
     dx = -res / jac
     x = x + dx
@@ -85,8 +85,8 @@ for i in range(np.shape(theta)[0]):
   print(">> Point", i, "------------------------------------")
 
   for ii in range(maxiter):
-    res = f_benchmark(p_spec3, x, theta[i], 0.0)
-    jac = get_dfdrho(p_spec3, x, theta[i], 0.0)
+    res = f_benchmark(p_spec3, x, theta[i])
+    jac = get_dfdrho(p_spec3, x, theta[i])
 
     dx = -res / jac
     x = x + dx
@@ -110,7 +110,7 @@ for i in range(np.shape(theta)[0]):
   print(">> Point", i, "------------------------------------")
 
   for ii in range(maxiter):
-    res = f_NAM(p_spec1, x, theta[i], 0.0)
+    res = f_NAM(p_spec1, x, theta[i])
     jac = 1
     
     dx = -res / jac
@@ -132,7 +132,7 @@ for i in range(np.shape(theta)[0]):
   print(">> Point", i, "------------------------------------")
 
   for ii in range(maxiter):
-    res = f_NAM(p_spec2, x, theta[i], 0.0)
+    res = f_NAM(p_spec2, x, theta[i])
     jac = 1
     
     dx = -res / jac
@@ -154,7 +154,7 @@ for i in range(np.shape(theta)[0]):
   print(">> Point", i, "------------------------------------")
 
   for ii in range(maxiter):
-    res = f_NAM(p_spec3, x, theta[i], 0.0)
+    res = f_NAM(p_spec3, x, theta[i])
     jac = 1
     
     dx = -res / jac
@@ -179,7 +179,7 @@ for i in range(np.shape(theta)[0]):
   print(">> Point", i, "------------------------------------")
 
   for ii in range(maxiter):
-    res = f_symbolic(p_spec1, x, theta[i], 0.0)
+    res = f_symbolic(p_spec1, x, theta[i])
     jac = 1
     
     dx = -res / jac
@@ -201,7 +201,7 @@ for i in range(np.shape(theta)[0]):
   print(">> Point", i, "------------------------------------")
 
   for ii in range(maxiter):
-    res = f_symbolic(p_spec2, x, theta[i], 0.0)
+    res = f_symbolic(p_spec2, x, theta[i])
     jac = 1
     
     dx = -res / jac
@@ -223,7 +223,7 @@ for i in range(np.shape(theta)[0]):
   print(">> Point", i, "------------------------------------")
 
   for ii in range(maxiter):
-    res = f_symbolic(p_spec3, x, theta[i], 0.0)
+    res = f_symbolic(p_spec3, x, theta[i])
     jac = 1
     
     dx = -res / jac
