@@ -2,11 +2,11 @@ import torch
 import joblib
 import numpy as np
 
-model_NAM = torch.jit.load("example/porous_metal/step_1_nn_training/results/Bomarito/baseLO/model.ptjit")
-f_INPUT_scaler  = joblib.load("example/porous_metal/step_1_nn_training/results/Bomarito/baseLO/xscaler.joblib")
-f_OUTPUT_scaler = joblib.load("example/porous_metal/step_1_nn_training/results/Bomarito/baseLO/yscaler.joblib")
+model_QNM = torch.jit.load("example/porous_metal/step_1_nn_training/results/Bomarito/PolynomialHO/model.ptjit")
+f_INPUT_scaler  = joblib.load("example/porous_metal/step_1_nn_training/results/Bomarito/PolynomialHO/xscaler.joblib")
+f_OUTPUT_scaler = joblib.load("example/porous_metal/step_1_nn_training/results/Bomarito/PolynomialHO/yscaler.joblib")
 
-def f_NAM(p, rho, theta, v):
+def f_QNM(p, rho, theta, v):
 
     sigma1pp = rho*np.cos(theta)
     sigma2pp = rho*np.sin(theta)
@@ -38,7 +38,7 @@ def f_NAM(p, rho, theta, v):
     RT = f_INPUT_scaler.transform(RT)
     RT = torch.tensor(RT, dtype=torch.float)
     
-    f = model_NAM(RT)
+    f = model_QNM(RT)
     f = f[0]
     f_numpy = f.detach().numpy()[0,0]
     f_numpy = f_OUTPUT_scaler.inverse_transform(f_numpy.reshape(-1,1))
