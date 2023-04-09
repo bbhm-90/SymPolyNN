@@ -3,7 +3,6 @@ from typing import (
     Tuple
 )
 from abc import ABC, abstractmethod
-
 from itertools import combinations
 import numpy as np
 import torch
@@ -76,7 +75,7 @@ class MyMLP(torch.nn.Module):
             net.append(
                 torch.nn.Linear(layers_[i], layers_[i+1], bias=lb),
             )
-            net.append(activations[i])
+            net.append(activations[i])    
         self.net = torch.nn.Sequential(*net)
     
     def forward(self, x:torch.Tensor) -> torch.Tensor:
@@ -124,7 +123,6 @@ class BaseAdditive(ABC, torch.nn.Module):
             raise NotImplementedError(params['final_bias'])
         
         self.models_1st_order:torch.nn.ModuleList = []
-        self.models_2nd_order:torch.nn.ModuleList = []
         self.set_models(layers_after_first, activations, last_bias, positional_encoding, params)
     
     @abstractmethod
@@ -140,6 +138,12 @@ class BaseAdditive(ABC, torch.nn.Module):
             for nn in layer.net:
                 if isinstance(nn, torch.nn.Linear):
                     nn.weight.data.fill_(value)
+
+    def getNNweights(self):
+        return self.models_1st_order.parameters()
+
+    def getTermWeights(self):
+        return [self.weights_1st_order, self.weights_2nd_order, self.final_bias]
 
     def reset_weights_1st_order(self, 
         vals:np.ndarray) -> None:
@@ -207,8 +211,6 @@ class BaseAdditive(ABC, torch.nn.Module):
 
         if freeze_second_order_weights:
             self.weights_2nd_order.requires_grad = False
-        for param in self.models_2nd_order:
-            param.requires_grad = False
 
         self.weights_1st_order.requires_grad = True
         for param in self.models_1st_order:
@@ -225,7 +227,6 @@ class BaseAdditive(ABC, torch.nn.Module):
         opt.zero_grad()
         loss_tot = loss_pred + penalty_first_order * loss_sparse_1st
         loss_tot.backward()
-        self.make_grad_zero(self.models_2nd_order)
         if freeze_second_order_weights:
             self.make_grad_zero(self.weights_2nd_order)
         opt.step()
@@ -244,9 +245,6 @@ class BaseAdditive(ABC, torch.nn.Module):
             param.requires_grad = False
         if freez_first_order_weights:
             self.weights_1st_order.requires_grad = False
-
-        for param in self.models_2nd_order.parameters():
-            param.requires_grad = True
         self.weights_2nd_order.requires_grad = True
 
 
@@ -279,9 +277,6 @@ class BaseAdditive(ABC, torch.nn.Module):
         for param in self.models_1st_order.parameters():
             param.requires_grad = True
         self.weights_1st_order.requires_grad = True
-        if self.models_2nd_order:
-            for param in self.models_2nd_order.parameters():
-                param.requires_grad = True
         self.weights_2nd_order.requires_grad = True
 
         y_, _, _ = self.forward(x)

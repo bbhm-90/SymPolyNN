@@ -118,12 +118,6 @@ def train(args):
 
     xraw, yraw = read_data(args.dataAdd, input_fields=input_fields)
 
-    indx = np.arange(xraw.shape[0])
-    np.random.shuffle(indx)
-    xraw = xraw[indx, :]
-    yraw = yraw[indx, :]
-
-
     if args.addetive_class in {"baseLO", "PolynomialHO"}:
         addetiveClass = PolynomialHigherOrder
     elif args.addetive_class == "singleMLP":
@@ -164,7 +158,7 @@ def train(args):
 
     lr_sch = torch.optim.lr_scheduler.ReduceLROnPlateau(
         optimizer=optE2E, factor=args.lrChangeFactor, patience=args.lrPatience
-    )
+    )    
     loss_pred_record = []
     loss_sprs_1st_record = []
     loss_sprs_2nd_record = []
@@ -176,6 +170,7 @@ def train(args):
     otherTrainParams = {"penalty_first_order":args.penalty_first_order, "penalty_second_order":args.penalty_second_order}
     weight_records = []
     global TIME_INIT; TIME_INIT = time.time()
+    model.train()
     for epoch in range(args.epochs):
         loss_pred_epoch = 0.
         loss_sprs_1st_epoch = 0.

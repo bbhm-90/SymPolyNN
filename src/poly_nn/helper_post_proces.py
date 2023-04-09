@@ -119,7 +119,8 @@ class PostProcessor():
 
     def save_shape_func(self,
         x:np.ndarray,
-        shape_functions_1st_order:np.ndarray=None, 
+        shape_functions_1st_order:np.ndarray=None,
+        name_tage='' 
         ):
         self.shap_func_dir = pjoin(self.outDir, "shape_func")
         if not os.path.exists(self.shap_func_dir):
@@ -132,7 +133,7 @@ class PostProcessor():
                         "f":shape_functions_1st_order[:, i]
                     }
                 ).to_csv(
-                    pjoin(self.shap_func_dir, f"f_{i}_x_{i}.csv"),
+                    pjoin(self.shap_func_dir, f"f_{i}_x_{i}{name_tage}.csv"),
                     index=False,
                     header=False,
                 )
@@ -153,11 +154,13 @@ class PostProcessor():
         return xscaled_new
     
     def extract_shape_functions(self, need_save=True):
+        shape_functions_1st_order = self.get_1st_shape_func(self.xscaled)
+        self.save_shape_func(self.xscaled, shape_functions_1st_order, name_tage='_trn')
+        
         xscaled_new = self.get_regular_samples()
         shape_functions_1st_order = self.get_1st_shape_func(xscaled_new)
         shape_functions_2nd_order = self.get_2nd_shape_func(xscaled_new)
-        if need_save:
-            self.save_shape_func(xscaled_new, shape_functions_1st_order)
+        self.save_shape_func(xscaled_new, shape_functions_1st_order)
         return xscaled_new, shape_functions_1st_order, shape_functions_2nd_order
     
     @torch.no_grad()

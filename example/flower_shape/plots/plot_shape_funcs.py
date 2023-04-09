@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 pjoin = os.path.join
 
 if __name__ == "__main__":
-    func_dir = "example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_0/shape_func"
+    func_dir = "example/flower_shape/step_1_nn_training/results_5/cylindrical/baseLO/PosEnc_0/shape_func"
     # func_dir = "example/flower_shape/step_1_nn_training/results/cartesian/baseLO/PosEnc_1/shape_func"
     funcs = [0, 1, 2]
     for i in funcs:
