@@ -4,34 +4,34 @@ from src.symbolic.equation_assembler import SymbolicYeildSurfacePolynimialHO
 config0 = {
     "form_type":"PolynomialHO",# str
     "x_num_dim":3, # int
-    "yscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/yscaler.joblib", # pkl file path
-    "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/xscaler.joblib", # pkl file path
+    "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_21/cylindrical/PolynomialHO/PosEnc_0/xscaler.joblib", # pkl file path
+    "yscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_21/cylindrical/PolynomialHO/PosEnc_0/yscaler.joblib", # pkl file path
     "func_weights": [
-        8.483229637145996, 6.242868900299072, 3.4870903491973877,
-        -3.2097339630126953, -2.875276565551758, 4.639223098754883,
-        -5.364171504974365, -0.6363519430160522, 2.2510015964508057
+        1.3890066146850586, 2.176483631134033, 0.23617863655090332,
+        -6.0072937735355936e-09, -0.2189200520515442, 9.166651437908513e-08,
+        -6.200025826075262e-09, 3.1179769877098806e-09, -8.219394942443614e-09
     ], # list of float
     "ho_dim_pairs": [[0,1],[0,2],[1,2],[0,0],[1,1],[2,2]],
-    "final_bias": 2.1608002185821533,
+    "final_bias": 0.6875945925712585,
     "symb_funcs":
     [
         {
             "input_dims":[0], # list of int
-            "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_0_x_0/tmpmdzmutqu/xscaler.joblib", # pkl file path
-            "yscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_0_x_0/tmpmdzmutqu/yscaler.joblib", # pkl file path
-            "equation":"(((-1.0268155 + (0.18257223 * (sin(sin(cos(x0))) + x0))) * x0) + -0.18156151)", # str (complexity: 14)
+            "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_21/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_0_x_0/tmp8kwixho0/xscaler.joblib", # pkl file path
+            "yscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_21/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_0_x_0/tmp8kwixho0/yscaler.joblib", # pkl file path
+            "equation":"((x0 / (-1.0003778 + (-0.3425479 * cos(sin(sin(exp(-0.3425479 * (sin((log(1.0482423) / x0) * 0.9900566) + -0.4054698)) / x0)))))) * 1.266024)", # str (complexity: 25)
         },
         {
             "input_dims":[1], # list of int
-            "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_1_x_1/tmpykbgzpl5/xscaler.joblib", # pkl file path
-            "yscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_1_x_1/tmpykbgzpl5/yscaler.joblib", # pkl file path
-            "equation":"(x0 + (sin((x0 + (x0 + 1.08937)) + cos(x0)) * 0.034534745))", # str (complexity: 13)
+            "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_21/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_1_x_1/tmpsh7sudxh/xscaler.joblib", # pkl file path
+            "yscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_21/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_1_x_1/tmpsh7sudxh/yscaler.joblib", # pkl file path
+            "equation":"(x0 + (0.011891233 * ((sin(cos(x0 * (x0 + (cos(x0) * cos(x0))))) + (-0.31972098 / 0.9982944)) * 0.89531267)))", # str (complexity: 21)
         },
         {
             "input_dims":[2], # list of int
-            "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_2_x_2/tmpbevwy471/xscaler.joblib", # pkl file path
-            "yscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_2_x_2/tmpbevwy471/yscaler.joblib", # pkl file path
-            "equation":"(sin(sin(sin(sin(sin((x0 / -0.20826437) + (0.11208224 * cos(0.83082455))) + (0.15613697 / 0.9782789))))) / sin(sin(sin(cos(sin((x0 / -0.20826437) + (0.15613697 * sin(log(exp(0.5182119))))) + sin(-0.20826437))))))", # str (complexity: 36)
+            "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_21/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_2_x_2/tmpbp82i60i/xscaler.joblib", # pkl file path
+            "yscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_21/cylindrical/PolynomialHO/PosEnc_0/shape_func/symbolic_pysr/f_2_x_2/tmpbp82i60i/yscaler.joblib", # pkl file path
+            "equation":"(((sin(-1.5393547 * ((x0 + 1.2935897) / 0.3214464)) + 0.13249452) / cos(cos(cos(sin(sin((1.5246235 * -1.5633299) * x0))) + ((1.5246235 * -1.5633299) * x0)) * -1.0388634)) + 0.031979296)", # str (complexity: 31)
         },
     ]
 }
