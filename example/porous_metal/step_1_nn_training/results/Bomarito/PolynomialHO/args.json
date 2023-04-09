@@ -17,10 +17,10 @@
         "elu",
         "tanh"
     ],
-    "positional_encoding": true,
+    "positional_encoding": false,
     "sigma_pos_enc": 0.0,
     "lr": 0.001,
-    "epochs": 10,
+    "epochs": 15000,
     "stop_loss": 1e-05,
     "batch_size": 5000,
     "train_shuffle": true,

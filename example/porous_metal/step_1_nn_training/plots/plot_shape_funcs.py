@@ -5,7 +5,7 @@ pjoin = os.path.join
 
 if __name__ == "__main__":
     # func_dir = "example/porous_metal/step_1_nn_training/results/Bomarito/PolynomialHO/shape_func"
-    func_dir = "example/porous_metal/step_1_nn_training/results_3/Bomarito/PolynomialHO/shape_func"
+    func_dir = "example/porous_metal/step_1_nn_training/results/Bomarito/PolynomialHO/shape_func"
     # func_dir = "example/flower_shape/step_1_nn_training/results/cartesian/baseLO/PosEnc_1/shape_func"
     funcs = [0, 1, 2, 3]
     for i in funcs:
