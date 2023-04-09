@@ -3,18 +3,12 @@ import autograd.numpy as np
 from autograd import elementwise_grad as egrad
 
 # Specify p
-<<<<<<< HEAD
 # p_spec1 = 100.0
 # p_spec2 = 200.0
 # p_spec3 = 300.0
 p_spec1 = 200.0
 p_spec2 = 300.0
 p_spec3 = 400.0
-=======
-p_spec1 = 50.0
-p_spec2 = 100.0
-p_spec3 = 150.0
->>>>>>> refs/remotes/origin/main
 
 
 # Data points
