@@ -4,8 +4,8 @@ from src.symbolic.equation_assembler import SymbolicYeildSurfacePolynimialHO
 config0 = {
     "form_type":"PolynomialHO",# str
     "x_num_dim":3, # int
-    "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/xscaler.joblib", # pkl file path
     "yscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/yscaler.joblib", # pkl file path
+    "xscaler_path":"example/MatsuokaNakai/step_1_nn_training/results_1/cylindrical/PolynomialHO/PosEnc_0/xscaler.joblib", # pkl file path
     "func_weights": [
         8.483229637145996, 6.242868900299072, 3.4870903491973877,
         -3.2097339630126953, -2.875276565551758, 4.639223098754883,
@@ -37,7 +37,7 @@ config0 = {
 }
 
 model_symb = SymbolicYeildSurfacePolynimialHO(config0)
-def f_symbolic(p, rho, theta, lamda):
+def f_symbolic(p, rho, theta):
   
   RT = np.array([p, rho, theta]).reshape(1,3)
   f = model_symb.predict(RT).item()

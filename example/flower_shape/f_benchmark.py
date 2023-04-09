@@ -7,7 +7,7 @@ k       = 3.0   # no. of petals
 amp     = 0.325 # amplitude
 
 # Benchmark
-def f_benchmark(p, rho, theta, lamda):
+def f_benchmark(p, rho, theta):
 
     phi = np.sqrt(3/2)*rho*(1 + amp*np.sin(k*theta))
 

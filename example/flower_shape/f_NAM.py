@@ -6,7 +6,7 @@ model_NAM = torch.jit.load("example/flower_shape/step_1_nn_training/results/cyli
 f_INPUT_scaler  = joblib.load("example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_1/xscaler.joblib")
 f_OUTPUT_scaler = joblib.load("example/flower_shape/step_1_nn_training/results/cylindrical/baseLO/PosEnc_1/yscaler.joblib")
 
-def f_NAM(p, rho, theta, lamda):
+def f_NAM(p, rho, theta):
 
     RT = np.array([p, rho, theta]).reshape(1,3)
     RT = f_INPUT_scaler.transform(RT)
