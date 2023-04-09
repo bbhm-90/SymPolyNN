@@ -1,0 +1,25 @@
+*Title
+PlateWithHole2D_benchmark
+
+*ConstitutiveLaw
+Solid
+ElastoPlasticity
+25000.0	0.3	30.0
+
+*LoadingStep
+100
+
+*BCFile
+BC.BC_PlateWithHole2D
+
+*InitialPressure
+-100.0
+
+*ResultDirectory
+./example/FEM/Result/PlateWithHole2D_benchmark
+
+*Mesh
+./example/FEM/Mesh/PerforatedPlate2d/PerforatedPlate2d
+
+*PlasticModel
+PlasticModel.MatsuokaNakai
