@@ -20,7 +20,7 @@ tol     = 1e-9
 maxiter = 10
 
 # Option
-optn = "benchmark"
+optn = "symbolic"
 # --------------------------------------------------------------
 
 
@@ -33,6 +33,8 @@ elif optn == "MLP":
     from example.flower_shape.f_MLP import *
 elif optn == "symbolic":
     from example.flower_shape.f_symbolic import *
+elif optn == "NAM":
+    from example.flower_shape.f_NAM import *
  
 
 # Define yield function
@@ -63,6 +65,8 @@ def f_yield(sigma1, sigma2, sigma3, optn):
         return f_MLP(p, rho, theta)
     elif optn == "symbolic":
         return f_symbolic(p, rho, theta)
+    elif optn == "NAM":
+        return f_NAM(p, rho, theta)
 
 
 # Define first gradient

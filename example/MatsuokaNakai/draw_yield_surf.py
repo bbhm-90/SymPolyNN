@@ -3,12 +3,9 @@ import autograd.numpy as np
 from autograd import elementwise_grad as egrad
 
 # Specify p
-# p_spec1 = 100.0
-# p_spec2 = 200.0
-# p_spec3 = 300.0
 p_spec1 = 200.0
-p_spec2 = 300.0
-p_spec3 = 400.0
+p_spec2 = 400.0
+p_spec3 = 600.0
 
 
 # Data points

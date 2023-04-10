@@ -76,7 +76,7 @@ def read_and_plot(data_sym_res_dir, loss_th=None):
 
 if __name__ == "__main__":
     base_dir = "example/porous_metal/step_1_nn_training/results/Bomarito/PolynomialHO/shape_func"
-    func_names = ["f_0_x_0", "f_1_x_1", "f_2_x_2", "f_0_x_0_trn", "f_1_x_1_trn", "f_2_x_2_trn"]
+    func_names = ["f_0_x_0", "f_1_x_1", "f_2_x_2", "f_3_x_3", "f_0_x_0_trn", "f_1_x_1_trn", "f_2_x_2_trn", "f_3_x_3_trn"]
     loss_ths = [None] * len(func_names)
     
     # data_path = "examples/MatsuokaNakai/results/cylindrical/PolynomialHO/PosEnc_0/shape_func/1st_0.csv"
