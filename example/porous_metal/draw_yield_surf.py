@@ -20,9 +20,9 @@ from autograd import elementwise_grad as egrad
 # v_spec = 0.064
 # fn = "4"
 
-p_spec = 0.47368
-v_spec = 0.064111
-fn = "tr1"
+# p_spec = 0.47368
+# v_spec = 0.064111
+# fn = "tr1"
 
 # p_spec = 0.66315
 # v_spec = 0.063666
@@ -32,9 +32,9 @@ fn = "tr1"
 # v_spec = 0.064555
 # fn = "tr3"
 
-# p_spec = 1.42105
-# v_spec = 0.063888
-# fn = "tr4"
+p_spec = 1.42105
+v_spec = 0.063888
+fn = "tr4"
 
 
 # Data points
@@ -209,7 +209,7 @@ if fn[0]== "t":
     ax.plot(theta, rho_NAM, 'r-', label='NAM')
     ax.plot(theta, rho_QNM, 'b:', label='QNM')
     ax.plot(theta, rho, 'k-', label='Analytical solution')
-    ax.plot(theta, rho_symb, 'g--', label='Symbolic regression')
+    ax.plot(theta, rho_symb, 'g--', label='Symbolic regression (without sparsity)')
 else:
     ax.plot(theta, rho, 'k-', label='Analytical solution')
     ax.plot(theta, rho_NAM, 'r-', markersize=4, label='NAM')
