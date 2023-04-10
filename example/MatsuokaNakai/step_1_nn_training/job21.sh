@@ -7,7 +7,7 @@ DATAPATH="$ROOTPATH/data"
 # AddetiveClassOptions=("baseLO" "PolynomialHO")
 # SigmaPosEnc=("2." "0.")
 # DataCord=("cylindrical")
-AddetiveClassOptions=("PolynomialHO")
+AddetiveClassOptions=("baseLO")
 SigmaPosEnc=("2.")
 DataCord=("cylindrical")
 
