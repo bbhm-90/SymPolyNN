@@ -8,17 +8,17 @@ from autograd import elementwise_grad as egrad
 # v_spec = 0.0635 
 # fn = "1"
 
-# p_spec = 1.0
-# v_spec = 0.065
+# p_spec = 0.75
+# v_spec = 0.0635
 # fn = "2"
 
 # p_spec = 1.25
 # v_spec = 0.063
 # fn = "3"
 
-# p_spec = 1.5
-# v_spec = 0.064
-# fn = "4"
+p_spec = 1.5
+v_spec = 0.0645
+fn = "4"
 
 # p_spec = 0.47368
 # v_spec = 0.064111
@@ -32,9 +32,9 @@ from autograd import elementwise_grad as egrad
 # v_spec = 0.064555
 # fn = "tr3"
 
-p_spec = 1.42105
-v_spec = 0.063888
-fn = "tr4"
+# p_spec = 1.42105
+# v_spec = 0.063888
+# fn = "tr4"
 
 
 # Data points
@@ -97,6 +97,10 @@ from example.porous_metal.f_QNM import *
 
 # QNM-symbolic yield function
 from example.porous_metal.f_symbolic import *
+
+
+# QNM-symbolic yield function (without sparsity)
+from example.porous_metal.f_symbolic_no_sparse import *
 
 
 # -----------------------------------------------------------------
@@ -199,6 +203,31 @@ for i in range(np.shape(theta)[0]):
             break
 # -----------------------------------------------------------------
 
+# -----------------------------------------------------------------
+# Return mapping for QNM-symbolic yield function
+rho_symb_wos = np.zeros_like(theta)
+for i in range(np.shape(theta)[0]):
+
+    x = p_spec
+
+    print(">> Point", i, "------------------------------------")
+
+    for ii in range(maxiter):
+        res = f_symbolic_wos(p_spec, x, theta[i], v_spec)
+        jac = 1
+        
+        dx = -res / jac
+        x = x + dx
+
+        err = np.linalg.norm(dx)
+
+        print(" Newton iter.",ii, ": err =", err)
+
+        if err < tol or ii == maxiter-1:
+            rho_symb_wos[i] = x
+            break
+# -----------------------------------------------------------------
+
 
 # Plot results
 fig = plt.figure(0,figsize=(7,7))
@@ -212,9 +241,8 @@ if fn[0]== "t":
     ax.plot(theta, rho_symb, 'g--', label='Symbolic regression (without sparsity)')
 else:
     ax.plot(theta, rho, 'k-', label='Analytical solution')
-    ax.plot(theta, rho_NAM, 'r-', markersize=4, label='NAM')
-    ax.plot(theta, rho_QNM, 'b:', label='QNM')
-    ax.plot(theta, rho_symb, 'g--', label='Symbolic regression')
+    ax.plot(theta, rho_symb, 'r-', label='Symb. (with sparsity control)')
+    ax.plot(theta, rho_symb_wos, 'b:', label='Symb. (without sparsity control)')
 
 ax.legend()
 ax.set_ylim(0,1)
