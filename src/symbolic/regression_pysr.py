@@ -22,6 +22,7 @@ class MyPySR(PySRRegressor):
             self.conf = json.load(f)
         if output_dirpath is not None:
             self.conf["tempdir"] = output_dirpath
+        self.scaler_type = ""
         if "scaler_type" in self.conf:
             self.scaler_type = self.conf["scaler_type"]
             del self.conf["scaler_type"]
@@ -38,7 +39,7 @@ class MyPySR(PySRRegressor):
     
     def set_data_scaler(self, x:np.ndarray, y:np.ndarray):
         if self.scaler_type == "":
-            return x, y
+            return
         self.xscaler = fit_scaler(x, self.scaler_type)
         self.yscaler = fit_scaler(y, self.scaler_type)
 
