@@ -21,19 +21,19 @@ from autograd import elementwise_grad as egrad
 # fn = "4"
 
 p_spec = 0.47368
-v_spec = 0.063666
+v_spec = 0.064111
 fn = "tr1"
 
 # p_spec = 0.66315
-# v_spec = 0.064111
+# v_spec = 0.063666
 # fn = "tr2"
 
-# p_spec = 0.94736
-# v_spec = 0.063222
+# p_spec = 1.23157
+# v_spec = 0.064555
 # fn = "tr3"
 
-# p_spec = 1.23157
-# v_spec = 0.064777
+# p_spec = 1.42105
+# v_spec = 0.063888
 # fn = "tr4"
 
 
@@ -95,8 +95,8 @@ from example.porous_metal.f_NAM import *
 from example.porous_metal.f_QNM import *
 
 
-# # QNM-symbolic yield function
-# from example.porous_metal.f_symbolic import *
+# QNM-symbolic yield function
+from example.porous_metal.f_symbolic import *
 
 
 # -----------------------------------------------------------------
@@ -104,24 +104,24 @@ from example.porous_metal.f_QNM import *
 rho = np.zeros_like(theta)
 for i in range(np.shape(theta)[0]):
 
-  x = p_spec
+    x = p_spec
 
-  print(">> Point", i, "------------------------------------")
+    print(">> Point", i, "------------------------------------")
 
-  for ii in range(maxiter):
-    res = f_benchmark(p_spec, x, theta[i], v_spec)
-    jac = get_dfdrho(p_spec, x, theta[i], v_spec)
+    for ii in range(maxiter):
+        res = f_benchmark(p_spec, x, theta[i], v_spec)
+        jac = get_dfdrho(p_spec, x, theta[i], v_spec)
 
-    dx = -res / jac
-    x = x + dx
+        dx = -res / jac
+        x = x + dx
 
-    err = np.linalg.norm(dx)
+        err = np.linalg.norm(dx)
 
-    print(" Newton iter.",ii, ": err =", err)
+        print(" Newton iter.",ii, ": err =", err)
 
-    if err < tol:
-      rho[i] = x
-      break
+        if err < tol:
+            rho[i] = x
+            break
 # -----------------------------------------------------------------
 
 # -----------------------------------------------------------------
@@ -129,24 +129,24 @@ for i in range(np.shape(theta)[0]):
 rho_NAM = np.zeros_like(theta)
 for i in range(np.shape(theta)[0]):
 
-  x = p_spec
+    x = p_spec
 
-  print(">> Point", i, "------------------------------------")
+    print(">> Point", i, "------------------------------------")
 
-  for ii in range(maxiter):
-    res = f_NAM(p_spec, x, theta[i], v_spec)
-    jac = 1
-    
-    dx = -res / jac
-    x = x + dx
+    for ii in range(maxiter):
+        res = f_NAM(p_spec, x, theta[i], v_spec)
+        jac = 1
+        
+        dx = -res / jac
+        x = x + dx
 
-    err = np.linalg.norm(dx)
+        err = np.linalg.norm(dx)
 
-    print(" Newton iter.",ii, ": err =", err)
+        print(" Newton iter.",ii, ": err =", err)
 
-    if err < tol or ii == maxiter-1:
-      rho_NAM[i] = x
-      break
+        if err < tol or ii == maxiter-1:
+            rho_NAM[i] = x
+            break
 # -----------------------------------------------------------------
 
 # -----------------------------------------------------------------
@@ -154,50 +154,50 @@ for i in range(np.shape(theta)[0]):
 rho_QNM = np.zeros_like(theta)
 for i in range(np.shape(theta)[0]):
 
-  x = p_spec
+    x = p_spec
 
-  print(">> Point", i, "------------------------------------")
+    print(">> Point", i, "------------------------------------")
 
-  for ii in range(maxiter):
-    res = f_QNM(p_spec, x, theta[i], v_spec)
-    jac = 1
-    
-    dx = -res / jac
-    x = x + dx
+    for ii in range(maxiter):
+        res = f_QNM(p_spec, x, theta[i], v_spec)
+        jac = 1
+        
+        dx = -res / jac
+        x = x + dx
 
-    err = np.linalg.norm(dx)
+        err = np.linalg.norm(dx)
 
-    print(" Newton iter.",ii, ": err =", err)
+        print(" Newton iter.",ii, ": err =", err)
 
-    if err < tol or ii == maxiter-1:
-      rho_QNM[i] = x
-      break
+        if err < tol or ii == maxiter-1:
+            rho_QNM[i] = x
+            break
 # -----------------------------------------------------------------
 
-# # -----------------------------------------------------------------
-# # Return mapping for QNM-symbolic yield function
-# rho_symb = np.zeros_like(theta)
-# for i in range(np.shape(theta)[0]):
+# -----------------------------------------------------------------
+# Return mapping for QNM-symbolic yield function
+rho_symb = np.zeros_like(theta)
+for i in range(np.shape(theta)[0]):
 
-#   x = p_spec
+    x = p_spec
 
-#   print(">> Point", i, "------------------------------------")
+    print(">> Point", i, "------------------------------------")
 
-#   for ii in range(maxiter):
-#     res = f_symbolic(p_spec, x, theta[i], v_spec)
-#     jac = 1
-    
-#     dx = -res / jac
-#     x = x + dx
+    for ii in range(maxiter):
+        res = f_symbolic(p_spec, x, theta[i], v_spec)
+        jac = 1
+        
+        dx = -res / jac
+        x = x + dx
 
-#     err = np.linalg.norm(dx)
+        err = np.linalg.norm(dx)
 
-#     print(" Newton iter.",ii, ": err =", err)
+        print(" Newton iter.",ii, ": err =", err)
 
-#     if err < tol or ii == maxiter-1:
-#       rho_symb[i] = x
-#       break
-# # -----------------------------------------------------------------
+        if err < tol or ii == maxiter-1:
+            rho_symb[i] = x
+            break
+# -----------------------------------------------------------------
 
 
 # Plot results
@@ -205,14 +205,16 @@ fig = plt.figure(0,figsize=(7,7))
 ax = fig.add_subplot(111, projection='polar')
 
 if fn[0]== "t":
-  ax.plot(theta_tr, rho_tr, 'ro', label='training data')
-  ax.plot(theta, rho_NAM, 'r-', label='NAM')
-  ax.plot(theta, rho_QNM, 'b:', label='QNM')
-  ax.plot(theta, rho, 'k-', label='Analytical solution')
+    ax.plot(theta_tr, rho_tr, 'ro', label='training data')
+    ax.plot(theta, rho_NAM, 'r-', label='NAM')
+    ax.plot(theta, rho_QNM, 'b:', label='QNM')
+    ax.plot(theta, rho, 'k-', label='Analytical solution')
+    ax.plot(theta, rho_symb, 'g--', label='Symbolic regression')
 else:
-  ax.plot(theta, rho, 'k-', label='Analytical solution')
-  ax.plot(theta, rho_NAM, 'r-', markersize=4, label='NAM')
-  ax.plot(theta, rho_QNM, 'b:', label='QNM')
+    ax.plot(theta, rho, 'k-', label='Analytical solution')
+    ax.plot(theta, rho_NAM, 'r-', markersize=4, label='NAM')
+    ax.plot(theta, rho_QNM, 'b:', label='QNM')
+    ax.plot(theta, rho_symb, 'g--', label='Symbolic regression')
 
 ax.legend()
 ax.set_ylim(0,1)
