@@ -4,21 +4,13 @@ import autograd.numpy as np
 from autograd import elementwise_grad as egrad
 
 # Specify p & v
-# p_spec = 0.5
-# v_spec = 0.0635 
-# fn = "1"
+p_spec = 0.75
+v_spec = 0.0635
+fn = "1"
 
-# p_spec = 0.75
-# v_spec = 0.0635
+# p_spec = 1.5
+# v_spec = 0.0645
 # fn = "2"
-
-# p_spec = 1.25
-# v_spec = 0.063
-# fn = "3"
-
-p_spec = 1.5
-v_spec = 0.0645
-fn = "4"
 
 # p_spec = 0.47368
 # v_spec = 0.064111
