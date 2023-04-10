@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import pandas as pd
 import torch
 from src.poly_nn.model import (
     MyMLP,
@@ -30,10 +31,10 @@ if __name__ == "__main__":
         loss_pred.append(epoch_loss)
 
     default_colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
-
-
+    y_ = model(x).detach().flatten()
+    pd.DataFrame({'x':x.flatten(), 'y_target':y.flatten(), 'y_pred':y_}).to_csv(os.path.join(save_dir, "results/spectral.csv"))
     plt.scatter(x, y, c=default_colors[0], label="data")
-    plt.plot(x, model(x).detach(), c=default_colors[1], label="model")
+    plt.plot(x, y_, c=default_colors[1], label="model")
     plt.xlabel("input")
     plt.ylabel("output")
     plt.legend()

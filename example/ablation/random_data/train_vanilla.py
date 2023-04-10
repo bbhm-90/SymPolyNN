@@ -1,5 +1,5 @@
 import os
-import numpy as np
+import pandas as pd
 import torch
 from src.poly_nn.model import (
     MyMLP,
@@ -30,7 +30,8 @@ if __name__ == "__main__":
 
     default_colors = plt.rcParams['axes.prop_cycle'].by_key()['color']
 
-
+    y_ = model(x).detach().flatten()
+    pd.DataFrame({'x':x.flatten(), 'y_target':y.flatten(), 'y_pred':y_}).to_csv(os.path.join(save_dir, "results/vanilla.csv"))
     plt.scatter(x, y, c=default_colors[0], label="data")
     plt.plot(x, model(x).detach(), c=default_colors[1], label="model")
     plt.xlabel("input")
