@@ -95,6 +95,10 @@ from example.porous_metal.f_symbolic import *
 from example.porous_metal.f_symbolic_no_sparse import *
 
 
+# Multivariate symbolic yield function
+from example.porous_metal.f_symbolic_multivariate import *
+
+
 # -----------------------------------------------------------------
 # Return mapping for benchmark yield function
 rho = np.zeros_like(theta)
@@ -220,6 +224,31 @@ for i in range(np.shape(theta)[0]):
             break
 # -----------------------------------------------------------------
 
+# -----------------------------------------------------------------
+# Return mapping for QNM-symbolic yield function
+rho_symb_multivariate = np.zeros_like(theta)
+for i in range(np.shape(theta)[0]):
+
+    x = 0.5
+
+    print(">> Point", i, "------------------------------------")
+
+    for ii in range(maxiter):
+        res = f_symbolic_multivariate(p_spec, x, theta[i], v_spec)
+        jac = 1
+        
+        dx = -res / jac
+        x = x + dx
+
+        err = np.linalg.norm(dx)
+
+        print(" Newton iter.",ii, ": err =", err)
+
+        if err < tol or ii == maxiter-1:
+            rho_symb_multivariate[i] = x
+            break
+# -----------------------------------------------------------------
+
 
 # Plot results
 fig = plt.figure(0,figsize=(7,7))
@@ -235,6 +264,7 @@ else:
     ax.plot(theta, rho, 'k-', label='Analytical solution')
     ax.plot(theta, rho_symb, 'r-', label='Symb. (with sparsity control)')
     ax.plot(theta, rho_symb_wos, 'b:', label='Symb. (without sparsity control)')
+    ax.plot(theta, rho_symb_multivariate, 'go', label='Multivariate symb.')
 
 ax.legend()
 ax.set_ylim(0,1)

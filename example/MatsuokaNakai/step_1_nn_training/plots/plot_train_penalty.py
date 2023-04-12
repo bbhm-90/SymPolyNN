@@ -65,6 +65,6 @@ def plot_penalty(data_dir:str, figDir:str):
 
 if __name__ == "__main__":
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    data_dir = "example/MatsuokaNakai/step_1_nn_training/results/cylindrical/PolynomialHO/PosEnc_0"
+    data_dir = "example/MatsuokaNakai/step_1_nn_training/results_21/cylindrical/PolynomialHO/PosEnc_0"
     # data_dir = "example/MatsuokaNakai/step_1_nn_training/results/cylindrical/baseLO/PosEnc_1"
     plot_penalty(data_dir, None)
