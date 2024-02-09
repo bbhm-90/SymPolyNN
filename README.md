@@ -11,5 +11,5 @@ The code is provided as-is for academic use only. Please ensure you cite our pap
 
 > Some examples will be added/updated.
 
-> Some coding parts in FEM and stress integration parts need to be modularized.
+> Some coding parts in FEM and stress integration need to be modularized.
 
